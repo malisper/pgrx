@@ -61,8 +61,7 @@ boundary is replaced:
 1. Copy the crate under `crates/ext/<name>`; replace its manifest with the
    rlib/pgrust shape above and pin its deps to versions already in
    `Cargo.lock` where possible.
-2. Add it to the workspace `members`, to `seams_init`'s `pgrx-ext` feature and
-   dependency list, and call `<name>::init_seams()` in `seams_init`.
+2. Link it into the host and call `<name>::init_seams()` at host startup.
 3. Add its statements to `crates/ext/_e2e/pgrx-examples.sql`.
 4. `cargo check -p <name>`; a missing `pg_sys` item names the next shim.
 
